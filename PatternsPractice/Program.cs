@@ -2,8 +2,12 @@
 
 public static class Program
 {
-    private static void Main(string[] args)
+    private static void Main(string[] _)
+        => RunStructuralPatterns();
+
+    private static void RunStructuralPatterns()
     {
-        Patterns.Facade.Runner.Run();
+        Patterns.Structural.Facade.Runner.Run();
+        Patterns.Structural.Decorator.Runner.Run();
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace PatternsPractice.Patterns.Facade;
+﻿namespace PatternsPractice.Patterns.Structural.Facade;
 
 public interface INotificateConfiguration
 {
@@ -27,24 +27,24 @@ internal class DefaultTelegramNotificateConfiguration : ITelegramNotificateConfi
 
 public static class ConfigurationLoader
 {
-    private const string s_server = "127.0.0.1";
-    private const string s_port = "8888";
-    private const string s_exchangeData = "8888";
+    private const string _server = "127.0.0.1";
+    private const string _port = "8888";
+    private const string _exchangeData = "8888";
 
     public static INotificateConfiguration? Load<T>(string path) where T : INotificateConfiguration
         => typeof(T).Name switch
         {
             "IMailNotificateConfiguration" => new DefaultMailNotificateConfiguration()
-                {
-                    Server = $"MAIL-{s_server}",
-                    Port = s_port,
-                    ExchangeData = s_exchangeData
-                },
+            {
+                Server = $"MAIL-{_server}",
+                Port = _port,
+                ExchangeData = _exchangeData
+            },
             "ITelegramNotificateConfiguration" => new DefaultTelegramNotificateConfiguration()
-                {
-                    Server = $"TELEGRAM-{s_server}",
-                    Port = s_port
-                },
+            {
+                Server = $"TELEGRAM-{_server}",
+                Port = _port
+            },
             _ => null
         };
 }

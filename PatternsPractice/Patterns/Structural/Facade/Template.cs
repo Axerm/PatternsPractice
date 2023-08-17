@@ -1,4 +1,4 @@
-﻿namespace PatternsPractice.Patterns.Facade;
+﻿namespace PatternsPractice.Patterns.Structural.Facade;
 
 public static class TemplateLoader
 {
@@ -37,11 +37,11 @@ public class MailTemplate : ITemplateFormatter<MailTemplateInfo>
         MailTemplateInfo templateInfo = new();
         templateInfoSetup(templateInfo);
 
-        if (String.IsNullOrWhiteSpace(templateInfo.TemplatePath) || String.IsNullOrWhiteSpace(templateInfo.ToEmail))
+        if (string.IsNullOrWhiteSpace(templateInfo.TemplatePath) || string.IsNullOrWhiteSpace(templateInfo.ToEmail))
             throw new ArgumentException(nameof(templateInfo));
 
         string template = TemplateLoader.Load(templateInfo.TemplatePath);
-        return String.Format(template, "processed MAIL", $"mail: {templateInfo.ToEmail}");
+        return string.Format(template, "processed MAIL", $"mail: {templateInfo.ToEmail}");
     }
 }
 
@@ -55,10 +55,10 @@ public class TelegramTemplate : ITemplateFormatter<TelegramTemplateInfo>
         TelegramTemplateInfo templateInfo = new();
         templateInfoSetup(templateInfo);
 
-        if (String.IsNullOrWhiteSpace(templateInfo.TemplatePath) || String.IsNullOrWhiteSpace(templateInfo.ToTelephone))
+        if (string.IsNullOrWhiteSpace(templateInfo.TemplatePath) || string.IsNullOrWhiteSpace(templateInfo.ToTelephone))
             throw new ArgumentException(nameof(templateInfo));
 
         string template = TemplateLoader.Load(templateInfo.TemplatePath);
-        return String.Format(template, "processed TELEGRAM", $"telephone: {templateInfo.ToTelephone}");
+        return string.Format(template, "processed TELEGRAM", $"telephone: {templateInfo.ToTelephone}");
     }
 }

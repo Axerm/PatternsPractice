@@ -1,4 +1,4 @@
-﻿namespace PatternsPractice.Patterns.Facade;
+﻿namespace PatternsPractice.Patterns.Structural.Facade;
 
 public interface INotificationFactory<TFormatterType> where TFormatterType : ITemplateInfo
 {
@@ -6,10 +6,10 @@ public interface INotificationFactory<TFormatterType> where TFormatterType : ITe
     ITemplateFormatter<TFormatterType> GetTemplateFormatter();
 }
 
-public class MailNotificationFactory: INotificationFactory<MailTemplateInfo>
+public class MailNotificationFactory : INotificationFactory<MailTemplateInfo>
 {
     public INotificateConfiguration GetConfiguration()
-        => ConfigurationLoader.Load<IMailNotificateConfiguration>(String.Empty)!;
+        => ConfigurationLoader.Load<IMailNotificateConfiguration>(string.Empty)!;
 
     public ITemplateFormatter<MailTemplateInfo> GetTemplateFormatter()
         => new MailTemplate();
@@ -18,7 +18,7 @@ public class MailNotificationFactory: INotificationFactory<MailTemplateInfo>
 public class TelegramNotificationFactory : INotificationFactory<TelegramTemplateInfo>
 {
     public INotificateConfiguration GetConfiguration()
-        => ConfigurationLoader.Load<ITelegramNotificateConfiguration>(String.Empty)!;
+        => ConfigurationLoader.Load<ITelegramNotificateConfiguration>(string.Empty)!;
 
     public ITemplateFormatter<TelegramTemplateInfo> GetTemplateFormatter()
         => new TelegramTemplate();

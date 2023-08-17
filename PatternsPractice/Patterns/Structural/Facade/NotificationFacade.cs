@@ -1,4 +1,4 @@
-﻿namespace PatternsPractice.Patterns.Facade;
+﻿namespace PatternsPractice.Patterns.Structural.Facade;
 
 public static class Sender
 {
