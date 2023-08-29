@@ -29,18 +29,18 @@ public static class ConfigurationLoader
 {
     private const string _server = "127.0.0.1";
     private const string _port = "8888";
-    private const string _exchangeData = "8888";
+    private const string _exchangeData = "exchange-specific-data";
 
     public static INotificateConfiguration? Load<T>(string path) where T : INotificateConfiguration
         => typeof(T).Name switch
         {
-            "IMailNotificateConfiguration" => new DefaultMailNotificateConfiguration()
+            nameof(IMailNotificateConfiguration) => new DefaultMailNotificateConfiguration()
             {
                 Server = $"MAIL-{_server}",
                 Port = _port,
                 ExchangeData = _exchangeData
             },
-            "ITelegramNotificateConfiguration" => new DefaultTelegramNotificateConfiguration()
+            nameof(ITelegramNotificateConfiguration) => new DefaultTelegramNotificateConfiguration()
             {
                 Server = $"TELEGRAM-{_server}",
                 Port = _port
