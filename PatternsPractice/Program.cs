@@ -7,7 +7,7 @@ public static class Program
 
     private static void RunStructuralPatterns()
     {
-        Patterns.Structural.Facade.Runner.Run();
+        //Patterns.Structural.Facade.Runner.Run();
         Patterns.Structural.Decorator.Runner.Run();
     }
 }
